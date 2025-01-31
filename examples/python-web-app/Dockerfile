@@ -4,8 +4,9 @@ FROM ubuntu:20.04
 # Set working directory to /app
 WORKDIR /app
 
-# Install system dependencies for Python and virtual environment
+# Install necessary system dependencies, including apt-utils
 RUN apt-get update && apt-get install -y \
+    apt-utils \
     python3 python3-pip python3-venv \
     && apt-get clean
 
