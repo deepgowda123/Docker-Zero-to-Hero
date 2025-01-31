@@ -2,16 +2,15 @@ FROM ubuntu
 
 WORKDIR /app
 
-# Install necessary dependencies and clean up apt cache
+# Install necessary dependencies and clean up apt cache to save space
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     python3-venv \
-    libpython3.12-stdlib \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
-# Copy requirements and app files
+# Copy requirements and application files
 COPY requirements.txt /app/
 COPY devops /app/
 
